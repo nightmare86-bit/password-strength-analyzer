@@ -49,3 +49,7 @@ def test_safe_result_does_not_contain_password():
     safe = str(result.safe_dict())
     assert password not in safe
     assert "password" not in safe.lower() or "common_password" in safe.lower()
+
+def test_empty_password_is_handled():
+    result = analyze_password("")
+    assert result.score == 0
